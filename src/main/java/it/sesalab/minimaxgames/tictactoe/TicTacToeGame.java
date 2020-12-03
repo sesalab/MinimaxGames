@@ -1,6 +1,7 @@
 package it.sesalab.minimaxgames.tictactoe;
 
 import it.sesalab.minimaxgames.ai.MinimaxAI;
+import it.sesalab.minimaxgames.ai.Move;
 
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class TicTacToeGame {
     }
 
     private void handleAiMove() {
-        it.sesalab.minimaxgames.ai.Move aiMove = ai.findBestMove(board);
+        Move aiMove = ai.findBestMove(board);
         aiMove.execute();
     }
 
@@ -55,7 +56,7 @@ public class TicTacToeGame {
         if(!board.isFreeCell(row,col)){
             return false;
         }
-        it.sesalab.minimaxgames.ai.Move playerMove = new TicTacToeBoard.TicTacToeMove(board,row,col,TicTacToeBoard.X);
+        Move playerMove = new TicTacToeBoard.TicTacToeMove(board,row,col,TicTacToeBoard.X);
         playerMove.execute();
         return true;
     }
