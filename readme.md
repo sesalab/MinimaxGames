@@ -1,5 +1,5 @@
 # Minimax Games
-Questo semplice progetto è realizzato nel contesto del corso di *Fondamenti di Intelligenza Artificiale* (a.a. 2020/21).
+Questo semplice progetto è realizzato nel contesto del corso di *Fondamenti di Intelligenza Artificiale*.
 Esso rappresenta un esempio di possibile implementazione di un agente risolutore di giochi a costo zero mediante l'algoritmo minimax.
 
 ## Contenuti
