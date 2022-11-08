@@ -1,6 +1,8 @@
 package it.sesalab.minimaxgames.tictactoe;
 
 import it.sesalab.minimaxgames.ai.MinimaxAI;
+import it.sesalab.minimaxgames.ai.MinimaxAIClassic;
+import it.sesalab.minimaxgames.ai.MinmaxAIAlphaBeta;
 import it.sesalab.minimaxgames.ai.Move;
 
 import java.util.Scanner;
@@ -11,10 +13,10 @@ public class TicTacToeGame {
     MinimaxAI ai;
     int boardDimension;
 
-    public TicTacToeGame(int boardDimension){
+    public TicTacToeGame(int boardDimension, MinimaxAI ai){
         this.boardDimension = boardDimension;
         board = TicTacToeBoard.createTicTacToeBoard(boardDimension);
-        ai = new MinimaxAI();
+        this.ai = ai;
     }
 
     public void handleTurn(int playerChoice){
@@ -62,6 +64,8 @@ public class TicTacToeGame {
     }
 
     public static void main(String[] args) {
+        
+
         Scanner sc = new Scanner(System.in);
 
         do {
@@ -69,7 +73,20 @@ public class TicTacToeGame {
             System.out.print("Enter board dimension (greater than 2): ");
             int boardDimension = sc.nextInt();
 
-            TicTacToeGame game = new TicTacToeGame(boardDimension);
+            System.out.print("Do you want Minimax OPTIMIZED? (Type Y for YES, any key for NO): ");
+            char aiChoice = sc.next().charAt(0);
+            MinimaxAI ai;
+            String response;
+            if(Character.toUpperCase(aiChoice) == 'Y') {
+                ai = new MinmaxAIAlphaBeta();
+                response = "Minimax Optimized with Alpha-Beta pruning selected...";
+            } else {
+                ai = new MinimaxAIClassic();
+                response = "You choose Minimax Classic selected...";
+            }
+            System.out.println(response);
+
+            TicTacToeGame game = new TicTacToeGame(boardDimension, ai);
 
             game.printBoard();
 
